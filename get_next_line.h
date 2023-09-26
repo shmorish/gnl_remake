@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:59:05 by morishitash       #+#    #+#             */
-/*   Updated: 2023/09/27 00:50:26 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/09/27 01:45:22 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*get_next_line(int fd);
 
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
-char	*ft_strjoin(char *s1, char *s2);
+char	*gnl_strjoin(char *s1, char *s2);
 int		ft_strchr(const char *s, int c);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 00:47:43 by morishitash       #+#    #+#             */
-/*   Updated: 2023/09/27 00:50:56 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/09/27 01:44:20 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_strdup(const char *s)
 	return (ret);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*gnl_strjoin(char *s1, char *s2)
 {
 	char	*ret;
 	size_t	i;
@@ -50,7 +50,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	j = 0;
 	ret = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!ret)
+	{
+		free(s1);
 		return (NULL);
+	}
 	while (s1[i] != '\0')
 		ret[j++] = s1[i++];
 	i = 0;

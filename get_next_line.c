@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:58:23 by morishitash       #+#    #+#             */
-/*   Updated: 2023/09/27 00:51:30 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/09/27 01:58:46 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*read_buffer(int fd, char **store)
 		if (store[fd] == NULL)
 			store[fd] = ft_strdup(buf);
 		else
-			store[fd] = ft_strjoin(store[fd], buf);
+			store[fd] = gnl_strjoin(store[fd], buf);
 		if (store[fd] == NULL)
 			return (free(buf), NULL);
 		if (ft_strchr(store[fd], '\n') || read_size == 0)
@@ -48,7 +48,10 @@ char	*concat_to_line(char *store)
 		i++;
 	line = (char *)malloc(sizeof(char) * (i + 2));
 	if (!line)
+	{
+		free(store);
 		return (NULL);
+	}
 	i = 0;
 	while (store[i] != '\n' && store[i] != '\0')
 	{
