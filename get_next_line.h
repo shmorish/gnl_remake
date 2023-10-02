@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:59:05 by morishitash       #+#    #+#             */
-/*   Updated: 2023/09/27 01:45:22 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/10/02 23:22:06 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
+#  define BUFFER_SIZE 2
 # endif
 
 # ifndef OPEN_MAX

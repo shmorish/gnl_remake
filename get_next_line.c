@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:58:23 by morishitash       #+#    #+#             */
-/*   Updated: 2023/09/27 01:58:46 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/10/02 23:24:35 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ char	*read_buffer(int fd, char **store)
 	int		read_size;
 	char	*buf;
 
-	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buf)
-		return (NULL);
 	while (1)
 	{
+		buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+		if (!buf)
+			return (NULL);
 		read_size = read(fd, buf, BUFFER_SIZE);
 		if (read_size < 0)
 			return (free(buf), NULL);
@@ -34,6 +34,7 @@ char	*read_buffer(int fd, char **store)
 			return (free(buf), NULL);
 		if (ft_strchr(store[fd], '\n') || read_size == 0)
 			break ;
+		free(buf);
 	}
 	return (free(buf), store[fd]);
 }
@@ -46,7 +47,9 @@ char	*concat_to_line(char *store)
 	i = 0;
 	while (store[i] != '\n' && store[i] != '\0')
 		i++;
-	line = (char *)malloc(sizeof(char) * (i + 2));
+	if (store[i] == '\n')
+		i++;
+	line = (char *)malloc(sizeof(char) * (i + 1));
 	if (!line)
 	{
 		free(store);
@@ -58,8 +61,9 @@ char	*concat_to_line(char *store)
 		line[i] = store[i];
 		i++;
 	}
-	line[i] = '\n';
-	line[i + 1] = '\0';
+	if (store[i] == '\n')
+		line[i++] = '\n';
+	line[i] = '\0';
 	return (line);
 }
 
@@ -103,28 +107,35 @@ char	*get_next_line(int fd)
 	if (line == NULL)
 		return (NULL);
 	store[fd] = update_store(store[fd]);
-	if (store[fd] == NULL)
+	if (store[fd] == NULL && line[0] == '\0')
 		return (NULL);
 	return (line);
 }
 
-// #include <libc.h>
-// int	main(void)
-// {
-// 	int		fd;
-// 	char	*line;
-// 	int		i;
+# include <libc.h>
+int	main(void)
+{
+	int		fd;
+	char	*line;
+	int		i;
 
-// 	i = 0;
-// 	fd = open("gnl.c", O_RDONLY);
-// 	while (1)
-// 	{
-// 		line = get_next_line(fd);
-// 		printf("line:[%d]    [%s]", i++, line);
-// 		if (line == NULL)
-// 			break ;
-// 		free(line);
-// 	}
-// 	close(fd);
-// 	return (system("leaks -q gnl"));
-// }
+	i = 0;
+	fd = open("a.txt", O_RDONLY);
+	if (fd == -1)
+	{
+		perror("open");
+		exit(1);
+	}
+	while (1)
+	{
+		line = get_next_line(fd);
+		printf("line:[%d]    %s", i++, line);
+		if (line == NULL)
+			break ;
+		free(line);
+	}
+	close(fd);
+	printf("\n");
+	system("leaks -q a.out");
+	return (0);
+}
