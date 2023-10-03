@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 23:58:23 by morishitash       #+#    #+#             */
-/*   Updated: 2023/10/03 22:50:54 by morishitash      ###   ########.fr       */
+/*   Created: 2023/10/03 23:03:15 by morishitash       #+#    #+#             */
+/*   Updated: 2023/10/03 23:03:16 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*read_buffer(int fd, char **store)
 {
