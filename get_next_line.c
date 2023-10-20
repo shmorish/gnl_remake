@@ -6,7 +6,7 @@
 /*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:58:23 by morishitash       #+#    #+#             */
-/*   Updated: 2023/10/03 22:50:54 by morishitash      ###   ########.fr       */
+/*   Updated: 2023/10/20 13:39:24 by morishitash      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,13 +99,13 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || OPEN_MAX <= fd || BUFFER_SIZE <= 0)
-		return (NULL);
+		return (free(store[fd]), NULL);
 	store[fd] = read_buffer(fd, store);
 	if (store[fd] == NULL)
 		return (NULL);
 	line = concat_to_line(store[fd]);
 	if (line == NULL)
-		return (NULL);
+		return (free(store[fd]), NULL);
 	store[fd] = update_store(store[fd]);
 	if (store[fd] == NULL && line[0] == '\0')
 		return (free(line), NULL);
