@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
+/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 00:47:43 by morishitash       #+#    #+#             */
-/*   Updated: 2023/09/27 01:44:20 by morishitash      ###   ########.fr       */
+/*   Updated: 2024/02/09 07:30:13 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@ char	*gnl_strjoin(char *s1, char *s2)
 	return (ret);
 }
 
-int	ft_strchr(const char *s, int c)
+int	has_newline(const char *s)
 {
 	size_t	i;
 
 	i = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i++] == (char)c)
+		if (s[i++] == '\n')
 			return (1);
 	}
 	return (0);

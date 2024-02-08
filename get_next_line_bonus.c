@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 23:03:15 by morishitash       #+#    #+#             */
-/*   Updated: 2024/02/09 04:48:21 by shmorish         ###   ########.fr       */
+/*   Created: 2023/09/26 23:58:23 by morishitash       #+#    #+#             */
+/*   Updated: 2024/02/09 07:28:34 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 char	*read_buffer(int fd, char **store)
 {
@@ -32,7 +32,7 @@ char	*read_buffer(int fd, char **store)
 			store[fd] = gnl_strjoin(store[fd], buf);
 		if (store[fd] == NULL)
 			return (free(buf), NULL);
-		if (ft_strchr(store[fd], '\n') || read_size == 0)
+		if (has_newline(store[fd]) || read_size == 0)
 			break ;
 		free(buf);
 	}
@@ -51,10 +51,7 @@ char	*concat_to_line(char *store)
 		i++;
 	line = (char *)malloc(sizeof(char) * (i + 1));
 	if (!line)
-	{
-		free(store);
-		return (NULL);
-	}
+		return (free(store), NULL);
 	i = 0;
 	while (store[i] != '\n' && store[i] != '\0')
 	{
@@ -78,10 +75,7 @@ char	*update_store(char *store)
 	while (store[i] != '\n' && store[i] != '\0')
 		i++;
 	if (store[i] == '\0')
-	{
-		free(store);
-		return (NULL);
-	}
+		return (free(store), NULL);
 	new_store = (char *)malloc(sizeof(char) * (ft_strlen(store) - i + 1));
 	if (!new_store)
 		return (NULL);
@@ -105,7 +99,11 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = concat_to_line(store[fd]);
 	if (line == NULL)
-		return (free(store[fd]), NULL);
+	{
+		free(store[fd]);
+		store[fd] = NULL;
+		return (NULL);
+	}
 	store[fd] = update_store(store[fd]);
 	if (store[fd] == NULL && line[0] == '\0')
 		return (free(line), NULL);
@@ -121,7 +119,7 @@ char	*get_next_line(int fd)
 // 	int		i;
 
 // 	i = 0;
-// 	fd = open("get_next_line.c", O_RDONLY);
+// 	fd = open("a.txt", O_RDONLY);
 // 	if (fd == -1)
 // 	{
 // 		perror("open");
@@ -137,6 +135,6 @@ char	*get_next_line(int fd)
 // 	}
 // 	close(fd);
 // 	printf("\n");
-// 	// system("leaks -q a.out");
+// 	system("leaks -q a.out");
 // 	return (0);
 // }

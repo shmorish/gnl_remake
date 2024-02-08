@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
+/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:59:05 by morishitash       #+#    #+#             */
-/*   Updated: 2023/10/03 22:56:26 by morishitash      ###   ########.fr       */
+/*   Updated: 2024/02/09 07:29:10 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
 char	*gnl_strjoin(char *s1, char *s2);
-int		ft_strchr(const char *s, int c);
+int     has_newline(const char *s);
 
 #endif
