@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: morishitashoto <morishitashoto@student.    +#+  +:+       +#+        */
+/*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 23:58:23 by morishitash       #+#    #+#             */
-/*   Updated: 2023/10/20 13:39:24 by morishitash      ###   ########.fr       */
+/*   Updated: 2024/02/09 04:43:12 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || OPEN_MAX <= fd || BUFFER_SIZE <= 0)
-		return (free(store[fd]), NULL);
+		return (NULL);
 	store[fd] = read_buffer(fd, store);
 	if (store[fd] == NULL)
 		return (NULL);
