@@ -6,7 +6,7 @@
 /*   By: shmorish <shmorish@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 23:03:15 by morishitash       #+#    #+#             */
-/*   Updated: 2024/02/09 04:43:30 by shmorish         ###   ########.fr       */
+/*   Updated: 2024/02/09 04:48:21 by shmorish         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,31 +112,31 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-#include <libc.h>
+// #include <libc.h>
 
-int	main(void)
-{
-	int		fd;
-	char	*line;
-	int		i;
+// int	main(void)
+// {
+// 	int		fd;
+// 	char	*line;
+// 	int		i;
 
-	i = 0;
-	fd = open("get_next_line.c", O_RDONLY);
-	if (fd == -1)
-	{
-		perror("open");
-		exit(1);
-	}
-	while (1)
-	{
-		line = get_next_line(fd);
-		printf("line:[%d]    %s", i++, line);
-		if (line == NULL)
-			break ;
-		free(line);
-	}
-	close(fd);
-	printf("\n");
-	// system("leaks -q a.out");
-	return (0);
-}
+// 	i = 0;
+// 	fd = open("get_next_line.c", O_RDONLY);
+// 	if (fd == -1)
+// 	{
+// 		perror("open");
+// 		exit(1);
+// 	}
+// 	while (1)
+// 	{
+// 		line = get_next_line(fd);
+// 		printf("line:[%d]    %s", i++, line);
+// 		if (line == NULL)
+// 			break ;
+// 		free(line);
+// 	}
+// 	close(fd);
+// 	printf("\n");
+// 	// system("leaks -q a.out");
+// 	return (0);
+// }
